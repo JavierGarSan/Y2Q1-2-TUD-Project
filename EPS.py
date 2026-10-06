@@ -139,8 +139,7 @@ print(f"EPS totals using the 30.3% PMD fraction (includes {safety_margin:g}x siz
 for name,panel in solar_panels.items():
     print(f"{name}: Array {massSolarArray(panel):.2f} kg (Array area : {areaSolarAray(panel):.2f}m^2), Battery {battery_weight():.2f} kg, PMD {pmd_mass(panel):.2f} kg, Total {total_eps_mass(panel):.2f} kg")
 
-## CODEX CODE STARTS HERE
-# EPS path losses; orbit energies already include the sizing margin.
+# EPS path losses; orbit energies already include the sizing margin. Simple calculations no special formulas. 
 day_energy_lost=(energy_one_orbit-eclipse_energy)*(1-path_efficiency["day"]) # J/orbit
 eclipse_energy_lost=eclipse_energy*(1-path_efficiency["eclipse"]) # J/orbit
 energy_lost_one_orbit=day_energy_lost+eclipse_energy_lost # J
@@ -152,7 +151,6 @@ print(f"EPS energy lost per 24-hour day: {energy_lost_per_day*JtoWh:.2f} Wh")
 print(f"Average EPS power lost over one day: {day_energy_lost/durations['day']:.2f} W")
 print(f"Average EPS power lost over one eclipse: {eclipse_energy_lost/durations['eclipse']:.2f} W")
 print(f"Average EPS power lost over one orbit: {average_power_lost:.2f} W")
-## CODEX CODE ENDS HERE
 
 
 
